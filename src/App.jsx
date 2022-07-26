@@ -6,6 +6,37 @@ import styles from './App.module.css'
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/m4zeboy.png',
+      name: 'Moises Silva',
+      role: 'Estagiário'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galera 👋',},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portefólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',},
+      {type: 'link', content: 'jame.design/doctorcare',},
+    ],
+    publishedAt: new Date('2022-07-25 18:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/AntonioCarlosSilva.png',
+      name: 'Antonio Carlos',
+      role: 'Dev'
+    },
+    content: [
+      {type: 'paragraph', content: 'Fala galera 👋',},
+      {type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portefólio. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀',},
+      {type: 'link', content: 'jose.design/doctorcare',},
+    ],
+    publishedAt: new Date('2022-07-24 18:00:00'),
+  },
+]
+
 export function App() {
  return (
   <div>
@@ -16,14 +47,15 @@ export function App() {
         <Sidebar />
       </aside>
       <main>
-        <Post 
-          author='Antonio carlos'
-          content='jose jose jose jose jose jose jose jose jose jose jose'
-        />
-        <Post 
-        author='Antonio carlos'
-        content='jose jose jose jose jose jose jose jose jose jose jose'
-        />
+        {posts.map(post => {
+          return (
+          <Post 
+            author={post.author}
+            content={post.content}
+            publishedAt={post.publishedAt}
+          />
+          )
+        })}        
       </main>
     </div>
       
